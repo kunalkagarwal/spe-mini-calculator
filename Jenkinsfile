@@ -15,13 +15,7 @@ pipeline {
                 branch: 'main'
             }
         }
-        stage('Debug Maven Path') {
-            steps {
-                sh 'echo $PATH'
-                sh 'which mvn'
-                sh 'mvn -version'
-            }
-        }
+
         stage('Build Code') {
             steps {
                 sh 'mvn clean package'
@@ -46,8 +40,14 @@ pipeline {
                     sh "docker push ${DOCKER_HUB_REPO}:latest"
                 }
             }
+
         }
-    }
+        stage('Run Ansible Playbook') {
+                    steps {
+                        sh '/opt/homebrew/bin/ansible-playbook -i inventory deploy.yml'
+                    }
+                }
+     }
     post {
         success {
             echo 'Build and tests passed!'

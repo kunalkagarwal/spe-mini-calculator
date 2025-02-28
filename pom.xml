@@ -39,7 +39,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>Main</mainClass>
+                            <mainClass>com.kunal.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

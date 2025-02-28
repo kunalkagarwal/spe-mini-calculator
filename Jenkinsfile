@@ -4,7 +4,7 @@ pipeline {
         PATH = "/opt/homebrew/Cellar/maven/3.9.9/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
         MAVEN_HOME = "/opt/homebrew/Cellar/maven/3.9.9/libexec"
         DOCKER_IMAGE_NAME = 'scientific-calculator'
-            DOCKER_HUB_REPO = 'kunal2221/scientific-calculator'
+        DOCKER_HUB_REPO = 'kunal2221/scientific-calculator'
 
     }
     stages {

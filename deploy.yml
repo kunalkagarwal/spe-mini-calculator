@@ -3,11 +3,11 @@
   become: false
   tasks:
     - name: Pull latest Docker image
-      command: docker pull kunalkagarwal/scientific-calculator:latest
+      command: docker pull kunal2221/scientific-calculator:latest
 
     - name: Stop existing container (if running)
       ignore_errors: yes
       command: docker rm -f calculator-container
 
     - name: Run Docker container in interactive mode
-      command: docker run -dit --name calculator-container kunalkagarwal/scientific-calculator
+      command: docker run -dit --name calculator-container kunal2221/scientific-calculator

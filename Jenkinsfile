@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git credentialsId: 'gitHub-pat',
+                git credentialsId: 'github-pat',
                 url: 'https://github.com/kunalkagarwal/spe-mini-calculator.git'
             }
         }

@@ -2,7 +2,7 @@ package com.kunal;
 
 import java.util.Scanner;
 
-public class Main {
+public class Main{
 
 
     public static double squareRoot(double x) {

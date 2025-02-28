@@ -3,6 +3,9 @@ pipeline {
     environment {
         PATH = "/opt/homebrew/Cellar/maven/3.9.9/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
         MAVEN_HOME = "/opt/homebrew/Cellar/maven/3.9.9/libexec"
+        DOCKER_IMAGE_NAME = 'scientific-calculator'
+            DOCKER_HUB_REPO = 'kunalkagarwal/scientific-calculator'
+
     }
     stages {
         stage('Clone Repository') {
@@ -27,6 +30,21 @@ pipeline {
         stage('Test Code') {
             steps {
                 sh 'mvn test'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh "docker build -t ${DOCKER_IMAGE_NAME} ."
+            }
+        }
+        stage('Push Docker Image') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-jenkins-pat', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                    sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
+                    sh "docker tag ${DOCKER_IMAGE_NAME} ${DOCKER_HUB_REPO}:latest"
+                    sh "docker push ${DOCKER_HUB_REPO}:latest"
+                }
             }
         }
     }

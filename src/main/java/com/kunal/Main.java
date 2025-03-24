@@ -1,7 +1,7 @@
 package com.kunal;
 
 import java.util.Scanner;
-//this
+//this is an example
 public class Main{
 
 

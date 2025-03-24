@@ -15,7 +15,7 @@ public class Main{
 
     public static long factorial(int n) {
         if (n < 0) {
-            throw new IllegalArgumentException("Cannot compute factorial of a negative number.");
+            throw new IllegalArgumentException("Cannot 222 compute factorial of a negative number.");
         }
         if (n>20) {
             throw new IllegalArgumentException("infinity ");
